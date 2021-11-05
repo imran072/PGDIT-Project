@@ -12,15 +12,17 @@
     <div class="card-title py-2">
     <h4>Register for an account!</h4>
     </div>
-    <form action="" method="post">
+    <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    {% include "partials/_messages.html" %}
     <div class="form-group">
-    <input type="text" name="username" placeholder="username" id="usernameField" class="form-control form-control-sm">
+    <input type="text" name="username" placeholder="User Name" id="usernameField" value = "{{fieldValue.username}}" class="form-control form-control-sm">
     <div class="invalid-feedback" id="username-feedback" style="display:none"></div>
-    <input type="email" name="email" placeholder="email" id="emailField" class="form-control form-control-sm">
+    <input type="email" name="email" placeholder="Email" id="emailField" value = "{{fieldValue.email}}" class="form-control form-control-sm">
     <div class="invalid-feedback" id="email-feedback" style="display:none"></div>
-    <input type="password" name="password" id="passwordField" class="form-control form-control-sm">
+    <input type="password" placeholder="Password" name="password" id="passwordField" class="form-control form-control-sm">
     <small class="float-right py-2 togglePassword">SHOW</small>
-    <input type="submit" value="Register" class='btn btn-block btn-primary'>
+    <input type="submit" value="Register" class='btn btn-block btn-primary submit-btn'>
     </div>
     
     </form>
