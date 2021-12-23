@@ -81,8 +81,9 @@ DATABASES = {
        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'expensewebsite.db',
         'USER': 'postgres',
-        'PASSWORD': '13101106',
+        'PASSWORD': 13101106,
         'HOST': 'localhost',
+        'PORT': 5433,
     }
 }
 

@@ -6,7 +6,7 @@ from django.contrib import messages
 
 
 # Create your views here.
-
+'''
 def index(request):
     currency_data = []
     file_path = os.path.join(settings.BASE_DIR,'currencies.json')
@@ -62,4 +62,3 @@ def index(request):
             CurrencyPreferences.objects.create(user=request.user, currency=currency)
         messages.success(request, 'Changes saved')
         return render(request, 'preferences/index.html', {'currencies': currency_data, 'user_preferences': user_preferences})
-'''

@@ -1,18 +1,30 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.timezone import now
 
 # Create your models here.
+
+
 class Expense(models.Model):
-    amount=models.FloatField()
-    date=models.DateField(default=now)
-    
+    amount = models.FloatField()
+    date = models.DateField(default=now)
+    description = models.TextField()
+    #tracking the user
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    category = models.CharField(max_length=270)
+
+    def __str__(self):
+        return self.category
 
     class Meta:
-        verbose_name = _("")
-        verbose_name_plural = _("s")
+        ordering: ['-date']
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name_plural = 'Categories'
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return reverse("_detail", kwargs={"pk": self.pk})
